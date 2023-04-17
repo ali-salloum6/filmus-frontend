@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link href="/ ">
             <DefaultButton text={"Home"} />
           </Link>
-          <Link href="/movies">
+          <Link href="/dashboard/movies">
             <DefaultButton text={"Movies"} />
           </Link>
           <Link href="/dashboard/personal">

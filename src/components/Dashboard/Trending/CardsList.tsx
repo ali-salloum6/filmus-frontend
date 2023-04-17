@@ -10,6 +10,7 @@ const CardsList = (responseData: IApiWholeRsponse) => {
   );
   let cards = filteredResults.map((card) => (
     <Card
+      key={card.id}
       id={card.id}
       imgPath={card.poster_path}
       name={card.title}

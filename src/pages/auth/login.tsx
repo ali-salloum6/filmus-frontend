@@ -57,7 +57,7 @@ const Login = () => {
         </Stack>
       </form>
       <Text mt={4} color={useColorModeValue("gray.600", "gray.300")}>
-        Don't have an account?{" "}
+        Don&apos;t have an account?{" "}
         <Link href="/filmus/signup">
           <Box as="span" color="blue.500">
             Sign up

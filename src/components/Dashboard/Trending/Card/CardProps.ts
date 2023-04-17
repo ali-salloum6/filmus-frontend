@@ -1,6 +1,6 @@
 export default interface ICardProps {
   id: number;
-  imgPath: string;
+  imgPath: string | null;
   name: string;
   date: string;
   rating: number;
