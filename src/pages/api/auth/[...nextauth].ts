@@ -1,5 +1,8 @@
 import axios from "axios";
 import NextAuth, { NextAuthOptions } from "next-auth";
+import { decode } from "next-auth/jwt";
+import { setCookie } from "typescript-cookie";
+
 import CredentialsProvider from "next-auth/providers/credentials";
 
 interface ICredentials {
@@ -32,14 +35,13 @@ export const authOptions: NextAuthOptions = {
           email: string;
           password: string;
         };
-        console.log("Email in auth: ", email);
 
         const body = {
           email: email,
           password: password,
         };
 
-        const res = await fetch("http://localhost:7000/users/login", {
+        const res = await fetch("http://localhost:4000/users/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -49,15 +51,22 @@ export const authOptions: NextAuthOptions = {
 
         const user = await res.json();
 
-        if (user) {
+        if (res.ok && user) {
           return user;
         } else return null;
       },
     }),
   ],
 
-  session: {
-    strategy: "jwt",
+  callbacks: {
+    jwt: async ({ token, user }) => {
+      user && (token.user = user);
+      return token;
+    },
+    session: async ({ session, token }) => {
+      session.user = token.user as ILoginResponse;
+      return session;
+    },
   },
 
   pages: {

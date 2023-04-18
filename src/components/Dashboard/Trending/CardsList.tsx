@@ -12,11 +12,12 @@ const CardsList = (responseData: IApiWholeRsponse) => {
     <Card
       key={card.id}
       id={card.id}
-      imgPath={card.poster_path}
-      name={card.title}
-      date={card.release_date ? card.release_date : "Uknown"}
-      rating={card.vote_average}
-      votes={card.vote_count}
+      poster_path={card.poster_path ? card.poster_path : null}
+      overview={card.overview}
+      title={card.title}
+      release_date={card.release_date ? card.release_date : "Uknown"}
+      vote_average={card.vote_average}
+      vote_count={card.vote_count}
       isPlanned={false}
       isFavourite={false}
     />
@@ -24,15 +25,6 @@ const CardsList = (responseData: IApiWholeRsponse) => {
 
   return (
     <VStack w="100%" justify={"left"}>
-      <Text
-        w={"100%"}
-        fontSize="2xl"
-        fontFamily="Work sans"
-        paddingLeft={5}
-        justifyItems={"left"}
-      >
-        Trending This week
-      </Text>
       <SimpleGrid w={"100%"} minChildWidth="300px" spacing="30px" padding={5}>
         {cards}
       </SimpleGrid>

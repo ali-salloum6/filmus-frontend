@@ -1,9 +1,8 @@
-import Layout from "@/components/layout";
-import { ReactElement } from "react";
-export default function DashboardHome() {
-  return <div>in home</div>;
-}
+import Navbar from "@/components/Dashboard/Navbar/Navbar";
 
-DashboardHome.getLayout = function getLayout(page: ReactElement) {
-  return <Layout>{page}</Layout>;
-};
+export default function DashboardHome() {
+  <>
+    <Navbar />
+    <div>Home</div>
+  </>;
+}
