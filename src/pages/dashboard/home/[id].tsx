@@ -60,25 +60,32 @@ export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
 //   };
 // };
 
-export async function getStaticPaths() {
-  const ids: { params: { id: string } }[] = [];
-  for (let i = 1; i <= 100; i++) {
-    ids.push({ params: { id: String(i) } });
-  }
-  return {
-    paths: ids,
-    fallback: false,
-  };
-}
+// export async function getStaticPaths() {
+//   const ids: { params: { id: string } }[] = [];
+//   for (let i = 1; i <= 100; i++) {
+//     ids.push({ params: { id: String(i) } });
+//   }
+//   return {
+//     paths: ids,
+//     fallback: false,
+//   };
+// }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id;
-  const URL = `${BASE_URL}/imdb/trending/${1}`;
-  const res = await axios.get<IApiWholeRsponse>(URL);
-  const data = res.data;
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // const id = context.params?.id;
+  // const URL = `${BASE_URL}/imdb/trending/${1}`;
+  // const res = await axios.get<IApiWholeRsponse>(URL);
+  // const data = res.data;
+  const temp: IApiWholeRsponse = {
+    page_name: "",
+    page: 0,
+    results: [],
+    total_pages: 0,
+    total_results: 0,
+  };
   return {
     props: {
-      data,
+      temp,
     },
   };
 };
