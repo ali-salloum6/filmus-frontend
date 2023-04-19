@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { Text, VStack } from "@chakra-ui/react";
 import CardsList from "@/components/Dashboard/Trending/CardsList";
 import IApiResponse from "@/interfaces/ApiResponse";
+import { BASE_URL } from "@/config/config";
 // import axios from "axios";
 // import { decode } from "next-auth/jwt";
 
@@ -59,39 +60,28 @@ export default function Personal() {
   const [toWatch, setToWatch] = useState<IApiResponse[]>([]);
   const [isLoading, setLoading] = useState(false);
 
+  const userId = "643ded806a29e80a19380b30";
   const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDNkZTZiMDc2MzE3MmZjNzQ0YjNjNGEiLCJ1c2VybmFtZSI6IkVsM29zOSIsImVtYWlsIjoiZWwzb3M5QGdtYWlsLmNvbSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4MTc3ODM1MiwiZXhwIjoxNjgzNTA2MzUyfQ.ygELavC_JzmxpaBthg_JclRlZSL1G29ZnaArUbb5YTk";
-  const config = {
-    headers: { authorization: `Bearer ${token}` },
-  };
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDNkZWQ4MDZhMjllODBhMTkzODBiMzAiLCJ1c2VybmFtZSI6IkVsM29zMTAiLCJlbWFpbCI6ImVsM29zMTBAZ21haWwuY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjgxOTE2OTU5LCJleHAiOjE2ODM2NDQ5NTl9.czBeNzhjNTT_YTSabtQdQET-pjBRjGIClJWq62to7H0";
   useEffect(() => {
     setLoading(true);
     axios
-      .get<IApiResponse[]>(
-        "http://localhost:4000/users/643ded806a29e80a19380b30/loved",
-        {
-          headers: { authorization: `Bearer ${token}` },
-        }
-      )
+      .get<IApiResponse[]>(`${BASE_URL}/users/${userId}/loved`, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((res) => setLoved(res.data))
       .catch((err) => console.log("Error: ", err));
 
     axios
-      .get<IApiResponse[]>(
-        "http://localhost:4000/users/643ded806a29e80a19380b30/watched",
-        {
-          headers: { authorization: `Bearer ${token}` },
-        }
-      )
+      .get<IApiResponse[]>(`${BASE_URL}/users/${userId}/watched`, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((res) => setWatched(res.data))
       .catch((err) => console.log("Error: ", err));
     axios
-      .get<IApiResponse[]>(
-        "http://localhost:4000/users/643ded806a29e80a19380b30/to-watch",
-        {
-          headers: { authorization: `Bearer ${token}` },
-        }
-      )
+      .get<IApiResponse[]>(`${BASE_URL}/users/${userId}/to-watch`, {
+        headers: { authorization: `Bearer ${token}` },
+      })
       .then((res) => setToWatch(res.data))
       .catch((err) => console.log("Error: ", err));
   }, []);
