@@ -11,7 +11,7 @@ import { Text } from "@chakra-ui/react";
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
 import axios from "axios";
 import type { GetServerSideProps, GetStaticProps } from "next/types";
-const DashboardHome = ({ data }: { data: IApiWholeRsponse }) => {
+export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
   const URL = `${BASE_URL}/imdb/trending/${1}`;
   console.log("Here");
 
@@ -37,9 +37,7 @@ const DashboardHome = ({ data }: { data: IApiWholeRsponse }) => {
       />
     </>
   );
-};
-
-export default DashboardHome;
+}
 
 // export const getServerSideProps: GetServerSideProps<{
 //   temp: IApiWholeRsponse;
@@ -63,9 +61,9 @@ export default DashboardHome;
 // };
 
 export async function getStaticPaths() {
-  const ids: { params: { id: number } }[] = [];
+  const ids: { params: { id: string } }[] = [];
   for (let i = 1; i <= 100; i++) {
-    ids.push({ params: { id: i } });
+    ids.push({ params: { id: String(i) } });
   }
   return {
     paths: ids,
