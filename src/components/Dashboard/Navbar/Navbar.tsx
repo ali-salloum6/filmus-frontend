@@ -21,7 +21,7 @@ const Navbar = () => {
           />
         </Box>
         <Wrap w="100%" spacing={4} justify="right" padding={5}>
-          <Link href="/ ">
+          <Link href="/dashboard/home/">
             <DefaultButton text={"Home"} />
           </Link>
           <Link href="/dashboard/movies">

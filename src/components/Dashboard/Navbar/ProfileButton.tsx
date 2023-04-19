@@ -17,7 +17,6 @@ interface IProps {
 }
 
 const ProfileButton = (props: IProps) => {
-  const { data: session } = useSession();
   return (
     <Menu>
       <MenuButton as={Button} colorScheme="none" size="sm">
@@ -32,11 +31,7 @@ const ProfileButton = (props: IProps) => {
         <Link href="/dashboard/profile">
           <MenuItem>Profile</MenuItem>
         </Link>
-        {session?.user ? (
-          <MenuItem onClick={() => signOut()}>Logout</MenuItem>
-        ) : (
-          <MenuItem onClick={() => signIn()}>Login</MenuItem>
-        )}
+        <MenuItem onClick={() => signIn()}>Login</MenuItem>
       </MenuList>
     </Menu>
   );
