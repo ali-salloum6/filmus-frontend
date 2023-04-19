@@ -2,7 +2,7 @@
 export const img_300 = "https://image.tmdb.org/t/p/w300";
 export const img_500 = "https://image.tmdb.org/t/p/w500";
 
-export const base_url = "https://api.themoviedb.org/3";
+export const BASE_URL = "https://filmus-backend.onrender.com";
 
 // contentModal and singleContent
 export const unavailable =

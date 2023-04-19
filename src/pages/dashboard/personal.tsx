@@ -109,7 +109,13 @@ export default function Personal() {
         >
           Favourite
         </Text>
-        <CardsList page={1} results={loved} total_pages={0} total_results={0} />
+        <CardsList
+          page={1}
+          results={loved}
+          total_pages={0}
+          total_results={0}
+          page_name={""}
+        />
         <Text
           w={"100%"}
           fontSize="2xl"
@@ -124,6 +130,7 @@ export default function Personal() {
           results={toWatch}
           total_pages={0}
           total_results={0}
+          page_name={""}
         />
         <Text
           w={"100%"}
@@ -139,6 +146,7 @@ export default function Personal() {
           results={watched}
           total_pages={0}
           total_results={0}
+          page_name={""}
         />
       </VStack>
     </>

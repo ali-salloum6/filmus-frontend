@@ -1,4 +1,4 @@
-import { base_url } from "../../config/config";
+import { BASE_URL } from "../../config/config";
 import useFetch from "../../hooks/useFetch";
 
 import Layout from "@/components/layout";
@@ -10,7 +10,7 @@ import { Text } from "@chakra-ui/react";
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
 
 const Movies = () => {
-  const URL = `${base_url}/discover/movie?api_key=a500ed6497632b594464be767b4d390d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}`;
+  const URL = `${BASE_URL}/discover/movie?api_key=a500ed6497632b594464be767b4d390d&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${1}`;
 
   const { data, error } = useFetch<IApiWholeRsponse>(URL);
 
@@ -33,6 +33,7 @@ const Movies = () => {
         results={data.results}
         total_pages={data.total_pages}
         total_results={data.total_results}
+        page_name={""}
       />
     </>
   );
