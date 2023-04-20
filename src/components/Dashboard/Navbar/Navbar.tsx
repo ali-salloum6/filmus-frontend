@@ -31,9 +31,9 @@ const Navbar = () => {
             <DefaultButton text={"Personal"} />
           </Link>
           <ProfileButton
-            name={"Vladimir"}
-            surname={"Kalabukhov"}
-            imageUrl="https://res.cloudinary.com/dk-find-out/image/upload/q_80,w_1920,f_auto/A-Alamy-BXWK5E_vvmkuf.jpg"
+            name={"El3os"}
+            surname={"Wa7ed"}
+            imageUrl="https://icon-library.com/images/anonymous-avatar-icon/anonymous-avatar-icon-25.jpg"
           />
         </Wrap>
       </HStack>

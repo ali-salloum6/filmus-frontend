@@ -1,9 +1,4 @@
 import { BASE_URL } from "../../../config/config";
-import useFetch from "../../../hooks/useFetch";
-import { useRouter } from "next/router";
-
-import Layout from "@/components/layout";
-import { ReactElement } from "react";
 import CardsList from "../../../components/Dashboard/Trending/CardsList";
 import IApiWholeRsponse from "../../../interfaces/ApiWholeResponse";
 import { Text } from "@chakra-ui/react";

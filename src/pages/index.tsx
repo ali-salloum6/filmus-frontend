@@ -1,23 +1,79 @@
-import Head from "next/head";
-import Image from "next/image";
-import Link from "next/link";
-import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
+import { Text } from "@chakra-ui/react";
+
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
-import Movies from "./dashboard/movies";
-import Personal from "./dashboard/personal";
-import Profile from "./dashboard/profile";
-import Login from "./auth/login";
-import Layout from "@/components/layout";
-import { ReactElement } from "react";
+import axios from "axios";
+import type { GetServerSideProps, GetStaticProps } from "next/types";
+import IApiWholeRsponse from "@/interfaces/ApiWholeResponse";
+import { BASE_URL } from "@/config/config";
+import CardsList from "@/components/Dashboard/Trending/CardsList";
+export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
+  const URL = `${BASE_URL}/imdb/trending/${1}`;
 
-// import Signup from "./auth/register";
-// import "./App.css";
-import { Box } from "@chakra-ui/react";
-import type { NextLayoutComponentType } from "next";
-
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
-  return <Navbar />;
+  if (!data) return <p>Loading...</p>;
+  return (
+    <>
+      <Navbar />
+      <Text
+        w={"100%"}
+        fontSize="2xl"
+        fontFamily="Work sans"
+        paddingLeft={5}
+        justifyItems={"left"}
+      >
+        Trending This week
+      </Text>
+      <CardsList
+        page={data.page}
+        results={data.results}
+        total_pages={data.total_pages}
+        total_results={data.total_results}
+        page_name={""}
+      />
+    </>
+  );
 }
+
+// export const getServerSideProps: GetServerSideProps<{
+//   temp: IApiWholeRsponse;
+// }> = async (context) => {
+//   console.log("Here");
+
+//   // const page = context.query.page;
+//   // const URL = `${BASE_URL}/imdb/trending/${1}`;
+//   // const res = await axios.get<IApiWholeRsponse>(URL);
+//   // const data = res.data;
+//   const temp: IApiWholeRsponse = {
+//     page_name: "",
+//     page: 0,
+//     results: [],
+//     total_pages: 0,
+//     total_results: 0,
+//   };
+//   return {
+//     props: { temp },
+//   };
+// };
+
+// export async function getStaticPaths() {
+//   const ids: { params: { id: string } }[] = [];
+//   for (let i = 1; i <= 100; i++) {
+//     ids.push({ params: { id: String(i) } });
+//   }
+//   return {
+//     paths: ids,
+//     fallback: false,
+//   };
+// }
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const id = context.params?.id;
+  const URL = `${BASE_URL}/imdb/trending/${1}`;
+  const res = await axios.get<IApiWholeRsponse>(URL);
+  const data = res.data;
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
