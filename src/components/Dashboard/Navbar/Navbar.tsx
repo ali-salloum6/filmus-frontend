@@ -30,6 +30,9 @@ const Navbar = () => {
           <Link href="/dashboard/personal">
             <DefaultButton text={"Personal"} />
           </Link>
+          <Link href="/add/add">
+            <DefaultButton text={"Add"} />
+          </Link>
           <ProfileButton
             name={"El3os"}
             surname={"Wa7ed"}
