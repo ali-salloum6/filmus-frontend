@@ -8,6 +8,7 @@ import { BASE_URL } from "@/config/config";
 import CardsList from "@/components/Dashboard/Trending/CardsList";
 export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
   const URL = `${BASE_URL}/imdb/trending/${1}`;
+  console.log("Data: ", data);
 
   if (!data) return <p>Loading...</p>;
   return (
@@ -33,27 +34,6 @@ export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps<{
-//   temp: IApiWholeRsponse;
-// }> = async (context) => {
-//   console.log("Here");
-
-//   // const page = context.query.page;
-//   // const URL = `${BASE_URL}/imdb/trending/${1}`;
-//   // const res = await axios.get<IApiWholeRsponse>(URL);
-//   // const data = res.data;
-//   const temp: IApiWholeRsponse = {
-//     page_name: "",
-//     page: 0,
-//     results: [],
-//     total_pages: 0,
-//     total_results: 0,
-//   };
-//   return {
-//     props: { temp },
-//   };
-// };
-
 // export async function getStaticPaths() {
 //   const ids: { params: { id: string } }[] = [];
 //   for (let i = 1; i <= 100; i++) {
@@ -65,11 +45,14 @@ export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
 //   };
 // }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps<{
+  data: IApiWholeRsponse;
+}> = async (context) => {
   const id = context.params?.id;
   const URL = `${BASE_URL}/imdb/trending/${1}`;
   const res = await axios.get<IApiWholeRsponse>(URL);
   const data = res.data;
+  console.log("Res: ", data);
 
   return {
     props: {
@@ -77,3 +60,17 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     },
   };
 };
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const id = context.params?.id;
+//   const URL = `${BASE_URL}/imdb/trending/${1}`;
+//   const res = await axios.get<IApiWholeRsponse>(URL);
+//   console.log("Res: ", res.data);
+
+//   const data = res.data;
+
+//   return {
+//     props: {
+//       Hello: "yo",
+//     },
+//   };
+// };
