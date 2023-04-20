@@ -1,14 +1,13 @@
-import { BASE_URL } from "../../../config/config";
-import CardsList from "../../../components/Dashboard/Trending/CardsList";
-import IApiWholeRsponse from "../../../interfaces/ApiWholeResponse";
 import { Text } from "@chakra-ui/react";
 
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
 import axios from "axios";
 import type { GetServerSideProps, GetStaticProps } from "next/types";
-export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
+import IApiWholeRsponse from "@/interfaces/ApiWholeResponse";
+import { BASE_URL } from "@/config/config";
+import CardsList from "@/components/Dashboard/Trending/CardsList";
+export default function Page({ data }: { data: IApiWholeRsponse }) {
   const URL = `${BASE_URL}/imdb/trending/${1}`;
-  console.log("Here");
 
   if (!data) return <p>Loading...</p>;
   return (
@@ -34,53 +33,42 @@ export default function DashboardHome({ data }: { data: IApiWholeRsponse }) {
   );
 }
 
-// export const getServerSideProps: GetServerSideProps<{
-//   temp: IApiWholeRsponse;
-// }> = async (context) => {
-//   console.log("Here");
-
-//   // const page = context.query.page;
-//   // const URL = `${BASE_URL}/imdb/trending/${1}`;
-//   // const res = await axios.get<IApiWholeRsponse>(URL);
-//   // const data = res.data;
-//   const temp: IApiWholeRsponse = {
-//     page_name: "",
-//     page: 0,
-//     results: [],
-//     total_pages: 0,
-//     total_results: 0,
-//   };
-//   return {
-//     props: { temp },
-//   };
-// };
-
-// export async function getStaticPaths() {
-//   const ids: { params: { id: string } }[] = [];
-//   for (let i = 1; i <= 100; i++) {
-//     ids.push({ params: { id: String(i) } });
-//   }
-//   return {
-//     paths: ids,
-//     fallback: false,
-//   };
-// }
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  // const id = context.params?.id;
-  // const URL = `${BASE_URL}/imdb/trending/${1}`;
-  // const res = await axios.get<IApiWholeRsponse>(URL);
-  // const data = res.data;
-  const temp: IApiWholeRsponse = {
-    page_name: "",
-    page: 0,
-    results: [],
-    total_pages: 0,
-    total_results: 0,
+export async function getStaticPaths() {
+  const ids: { params: { id: string } }[] = [];
+  for (let i = 1; i <= 100; i++) {
+    ids.push({ params: { id: String(i) } });
+  }
+  return {
+    paths: ids,
+    fallback: false,
   };
+}
+
+export const getStaticProps: GetStaticProps<{
+  data: IApiWholeRsponse;
+}> = async (context) => {
+  const id = context.params?.id;
+  const URL = `${BASE_URL}/imdb/trending/${id}`;
+  const res = await axios.get<IApiWholeRsponse>(URL);
+  const data = res.data;
+
   return {
     props: {
-      temp,
+      data,
     },
   };
 };
+// export const getServerSideProps: GetServerSideProps = async (context) => {
+//   const id = context.params?.id;
+//   const URL = `${BASE_URL}/imdb/trending/${1}`;
+//   const res = await axios.get<IApiWholeRsponse>(URL);
+//   console.log("Res: ", res.data);
+
+//   const data = res.data;
+
+//   return {
+//     props: {
+//       Hello: "yo",
+//     },
+//   };
+// };

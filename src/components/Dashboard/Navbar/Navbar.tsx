@@ -3,7 +3,7 @@ import React from "react";
 import ProfileButton from "./ProfileButton";
 import DefaultButton from "../../Common/DefaultButton";
 import logo from "../../../assets/Filmus-Word-Logo.png";
-import Link from "next/dist/client/link";
+import Link from "next/link";
 import Image from "next/image";
 
 // TODO : set name, surname and proper profile picture to @ProfileButton
@@ -21,7 +21,7 @@ const Navbar = () => {
           />
         </Box>
         <Wrap w="100%" spacing={4} justify="right" padding={5}>
-          <Link href="/dashboard/home/">
+          <Link href="/dashboard/home/1">
             <DefaultButton text={"Home"} />
           </Link>
           <Link href="/dashboard/movies">
