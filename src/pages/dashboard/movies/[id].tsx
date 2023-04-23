@@ -1,19 +1,19 @@
+import Layout from "@/components/layout";
+import { ReactElement, useEffect, useState } from "react";
 import { Text } from "@chakra-ui/react";
 
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
-import axios from "axios";
-import type { GetServerSideProps, GetStaticProps } from "next/types";
-import IApiWholeRsponse from "@/interfaces/ApiWholeResponse";
-import { BASE_URL } from "@/config/config";
 import CardsList from "@/components/Dashboard/Trending/CardsList";
+import { BASE_URL } from "@/config/config";
+import useFetch from "@/hooks/useFetch";
+import IApiWholeRsponse from "@/interfaces/ApiWholeResponse";
+import { GetStaticProps } from "next/types";
+import axios from "axios";
 import CustomPagination from "@/components/Dashboard/Pagination/Pagination";
-import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
-import { redirect } from "next/navigation";
 
-export default function Page({ data }: { data: IApiWholeRsponse }) {
+const Movies = ({ data }: { data: IApiWholeRsponse }) => {
   if (!data) return <p>Loading...</p>;
-
   return (
     <>
       <Navbar />
@@ -36,7 +36,7 @@ export default function Page({ data }: { data: IApiWholeRsponse }) {
       <CustomPagination curPage={data.page} numOfPages={data.total_pages} />
     </>
   );
-}
+};
 
 export async function getStaticPaths() {
   const ids: { params: { id: string } }[] = [];
@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps<{
   data: IApiWholeRsponse;
 }> = async (context) => {
   const id = context.params?.id;
-  const URL = `${BASE_URL}/imdb/trending/${id}`;
+  const URL = `${BASE_URL}/imdb/movies/${id}`;
   const res = await axios.get<IApiWholeRsponse>(URL);
   const data = res.data;
 
@@ -63,3 +63,5 @@ export const getStaticProps: GetStaticProps<{
     },
   };
 };
+
+export default Movies;

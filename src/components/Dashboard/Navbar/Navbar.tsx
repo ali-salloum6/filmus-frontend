@@ -24,7 +24,7 @@ const Navbar = () => {
           <Link href="/dashboard/home/1">
             <DefaultButton text={"Home"} />
           </Link>
-          <Link href="/dashboard/movies">
+          <Link href="/dashboard/movies/1">
             <DefaultButton text={"Movies"} />
           </Link>
           <Link href="/dashboard/personal">
