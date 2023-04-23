@@ -11,8 +11,6 @@ export default function CustomPagination(props: IProps) {
 
   // Scroll to top when page changes
   const handlePageChange = (page: string) => {
-    console.log("Change");
-
     let newPath: string = router.pathname.slice(0, -4) + page;
     router.replace(newPath);
   };

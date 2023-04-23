@@ -2,7 +2,6 @@ import { Box, Text, Divider, Wrap, HStack, VStack } from "@chakra-ui/react";
 import React from "react";
 import ProfileButton from "./ProfileButton";
 import DefaultButton from "../../Common/DefaultButton";
-import logo from "../../../assets/Filmus-Word-Logo.png";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -14,6 +13,7 @@ const Navbar = () => {
       <HStack w="100%">
         <Box padding={5}>
           <Image
+            priority={true}
             width={175}
             height={175}
             src={"/Filmus-Word-Logo.png"}
