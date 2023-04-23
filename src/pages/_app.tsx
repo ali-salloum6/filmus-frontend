@@ -9,7 +9,9 @@ import type { NextComponentType } from "next";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <ChakraProvider>
-      <Component {...pageProps} />
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </ChakraProvider>
   );
 }

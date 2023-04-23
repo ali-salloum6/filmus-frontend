@@ -20,12 +20,12 @@ const Login = () => {
   const handleLogin = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
-    // const result = await signIn("credentials", {
-    //   email: email,
-    //   password: password,
-    //   redirect: true,
-    //   callbackUrl: "/",
-    // });
+    const result = await signIn("credentials", {
+      email: email,
+      password: password,
+      redirect: true,
+      callbackUrl: "/dashboard/home/1",
+    });
   };
 
   return (

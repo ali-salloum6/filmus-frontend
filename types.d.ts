@@ -3,7 +3,7 @@ interface ILoginResponse {
   username: string;
   email: string;
   isAdmin: boolean;
-  token: string;
+  access_token: string;
 }
 
 interface IMovieResponse {

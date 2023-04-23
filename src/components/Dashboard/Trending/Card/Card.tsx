@@ -22,10 +22,12 @@ import { FaRegSave } from "react-icons/fa";
 import ICardProps from "./CardProps";
 import axios from "axios";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 
 const Card = (props: ICardProps) => {
-  const token = "";
-  const userId = "";
+  const { data: session } = useSession();
+  const token = session?.user.access_token;
+  const userId = session?.user._id;
   const config = {
     headers: { authorization: `Bearer ${token}` },
   };

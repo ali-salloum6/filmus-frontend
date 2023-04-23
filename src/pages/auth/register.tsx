@@ -15,16 +15,18 @@ import axios from "axios";
 import ILoginResponse from "../../interfaces/LoginResponse";
 import { BASE_URL } from "../../config/config";
 import IRegisterData from "../../interfaces/RegisterData";
+import { useRouter } from "next/router";
 
 interface IProps {
   setToken: (userToken: { token: string }) => void;
   setUserId: (userId: { userId: string }) => void;
 }
 
-const Signup = (props: IProps) => {
+const Signup = () => {
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [password, setConfirmPassword] = useState<string>("");
+  const router = useRouter();
 
   const body: IRegisterData = {
     email: email,
@@ -35,9 +37,7 @@ const Signup = (props: IProps) => {
   const handleSignup = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const res = await axios.post<ILoginResponse>(`${BASE_URL}/users`, body);
-
-    props.setToken({ token: res.data.access_token });
-    props.setUserId({ userId: res.data._id });
+    router.replace("/auth/login");
   };
 
   return (

@@ -3986,11 +3986,6 @@ typed-array-length@^1.0.4:
     for-each "^0.3.3"
     is-typed-array "^1.1.9"
 
-typescript-cookie@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/typescript-cookie/-/typescript-cookie-1.0.5.tgz#daca4f30167aa2ed45d4b10a7852b8dc016cc02e"
-  integrity sha512-DT9rm3AEqpIfcocbdNJ/gyVyNMBHu8sWUk5hBF13nIaRnHrEUkypBAyvNXRlQcNNZYcEtZc4TPcblR8FVq+xqA==
-
 typescript@5.0.4:
   version "5.0.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-5.0.4.tgz#b217fd20119bd61a94d4011274e0ab369058da3b"
