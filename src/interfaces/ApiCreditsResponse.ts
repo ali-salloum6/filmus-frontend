@@ -1,4 +1,4 @@
-interface Cast {
+export interface ICast {
   adult: boolean;
   gender: number | null;
   id: number;
@@ -13,7 +13,7 @@ interface Cast {
   order: number;
 }
 
-interface Crew {
+interface ICrew {
   adult: boolean;
   gender: number | null;
   id: number;
@@ -29,8 +29,8 @@ interface Crew {
 
 interface ICreditsData {
   id: number;
-  cast: Cast;
-  crew: Crew;
+  cast: ICast[];
+  crew: ICrew[];
 }
 
 export default ICreditsData;

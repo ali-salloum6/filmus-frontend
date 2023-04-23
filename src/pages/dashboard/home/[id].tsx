@@ -33,7 +33,7 @@ export default function Page({ data }: { data: IApiWholeRsponse }) {
         total_results={data.total_results}
         page_name={""}
       />
-      <CustomPagination curPage={data.page} numOfPages={data.total_pages} />
+      <CustomPagination curPage={data.page} numOfPages={100} />
     </>
   );
 }
