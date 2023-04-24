@@ -16,6 +16,8 @@ interface IProps {
   toWatch: IApiResponse[];
 }
 export default function Personal(props: IProps) {
+  console.log(props);
+
   return (
     <>
       <VStack w="100%" justify={"left"}>
@@ -85,9 +87,9 @@ export default function Personal(props: IProps) {
 export const getServerSideProps: GetServerSideProps<IProps> = async (
   context
 ) => {
-  // const session = await getSession(context);
+  const session = await getSession(context);
 
-  //console.log("Session: ", session);
+  console.log("Session: ", session);
 
   // const userId = session?.user._id;
   // const token = session?.user.access_token;
