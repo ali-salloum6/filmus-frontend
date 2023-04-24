@@ -35,6 +35,9 @@ export default function Personal(props: IProps) {
           total_pages={0}
           total_results={0}
           page_name={""}
+          isPlanned={false}
+          isWatched={false}
+          isFavourite={true}
         />
         <Text
           w={"100%"}
@@ -51,6 +54,9 @@ export default function Personal(props: IProps) {
           total_pages={0}
           total_results={0}
           page_name={""}
+          isPlanned={true}
+          isWatched={false}
+          isFavourite={false}
         />
         <Text
           w={"100%"}
@@ -67,6 +73,9 @@ export default function Personal(props: IProps) {
           total_pages={0}
           total_results={0}
           page_name={""}
+          isPlanned={false}
+          isWatched={true}
+          isFavourite={false}
         />
       </VStack>
     </>

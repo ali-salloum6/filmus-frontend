@@ -32,6 +32,9 @@ export default function Page({ data }: { data: IApiWholeRsponse }) {
         total_pages={data.total_pages}
         total_results={data.total_results}
         page_name={""}
+        isPlanned={false}
+        isWatched={false}
+        isFavourite={false}
       />
       <CustomPagination curPage={data.page} numOfPages={100} />
     </>

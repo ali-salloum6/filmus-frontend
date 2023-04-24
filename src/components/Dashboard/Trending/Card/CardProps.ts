@@ -8,4 +8,5 @@ export default interface ICardProps {
   release_date: string;
   isPlanned: boolean;
   isFavourite: boolean;
+  isWatched: boolean;
 }

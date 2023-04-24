@@ -3,8 +3,9 @@ import React from "react";
 import IApiResponse from "../../../interfaces/ApiResponse";
 import IApiWholeRsponse from "../../../interfaces/ApiWholeResponse";
 import Card from "./Card/Card";
+import ICardsListProps from "./ CardsListProps";
 
-const CardsList = (responseData: IApiWholeRsponse) => {
+const CardsList = (responseData: ICardsListProps) => {
   const filteredResults = responseData.results.filter(
     (card) => card.title !== undefined && card.poster_path !== undefined
   );
@@ -18,8 +19,9 @@ const CardsList = (responseData: IApiWholeRsponse) => {
       release_date={card.release_date ? card.release_date : "Uknown"}
       vote_average={card.vote_average}
       vote_count={card.vote_count}
-      isPlanned={false}
-      isFavourite={false}
+      isPlanned={responseData.isPlanned}
+      isFavourite={responseData.isFavourite}
+      isWatched={responseData.isWatched}
     />
   ));
 
