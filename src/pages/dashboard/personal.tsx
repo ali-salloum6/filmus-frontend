@@ -8,12 +8,13 @@ import { BASE_URL } from "@/config/config";
 import { getSession } from "next-auth/react";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { GetServerSideProps } from "next";
-import { getServerSession } from "next-auth";
+import { Session, getServerSession } from "next-auth";
 
 interface IProps {
   loved: IApiResponse[];
   watched: IApiResponse[];
   toWatch: IApiResponse[];
+  session: Session | null;
 }
 export default function Personal(props: IProps) {
   console.log(props);
@@ -130,6 +131,7 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (
       loved,
       watched,
       toWatch,
+      session,
     },
   };
 };
