@@ -25,7 +25,7 @@ interface IProps {
 const Signup = () => {
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
-  const [password, setConfirmPassword] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
   const router = useRouter();
 
   const body: IRegisterData = {
@@ -62,11 +62,11 @@ const Signup = () => {
             />
           </FormControl>
           <FormControl>
-            <FormLabel>Confirm Password</FormLabel>
+            <FormLabel>Password</FormLabel>
             <Input
               type="password"
               value={password}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </FormControl>
           <Button type="submit" colorScheme="teal">
@@ -76,7 +76,7 @@ const Signup = () => {
       </form>
       <Text mt={4} color={useColorModeValue("gray.600", "gray.300")}>
         Already have an account?{" "}
-        <Link href="/filmus/login">
+        <Link href="/auth/login">
           <Box as="span" color="blue.500">
             Login
           </Box>
