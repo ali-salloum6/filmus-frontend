@@ -87,6 +87,8 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (
 ) => {
   const session = await getSession(context);
 
+  console.log("Session: ", session);
+
   const userId = session?.user._id;
   const token = session?.user.access_token;
 

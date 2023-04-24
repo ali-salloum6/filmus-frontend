@@ -20,7 +20,7 @@ import IUpdatedUser from "../../interfaces/UpdatedUser";
 
 const Profile = () => {
   // const URL = `${BASE_URL}/users/${userId}`;
-
+  fetch;
   // const [email, setEmail] = useState<string>(email_);
   // const [userName, setUserName] = useState<string>(username);
   // const [password, setPassword] = useState<string>(username);
