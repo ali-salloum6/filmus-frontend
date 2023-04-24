@@ -6,8 +6,7 @@ export default interface IApiResponse extends IMovieResponse {
   popularity: number;
   video: boolean;
 }
-interface IMovieResponse {
-  _id: string;
+export interface IMovieData {
   title: string;
   overview: string;
   poster_path: string | null;
@@ -15,4 +14,7 @@ interface IMovieResponse {
   id: number;
   vote_count: number;
   release_date: string;
+}
+interface IMovieResponse extends IMovieData {
+  _id: string;
 }
