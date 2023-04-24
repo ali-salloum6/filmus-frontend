@@ -17,11 +17,6 @@ import { BASE_URL } from "../../config/config";
 import IRegisterData from "../../interfaces/RegisterData";
 import { useRouter } from "next/router";
 
-interface IProps {
-  setToken: (userToken: { token: string }) => void;
-  setUserId: (userId: { userId: string }) => void;
-}
-
 const Signup = () => {
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
