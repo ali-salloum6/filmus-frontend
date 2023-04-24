@@ -30,6 +30,9 @@ const ProfileButton = (props: IProps) => {
         />
       </MenuButton>
       <MenuList>
+        <Link href="/dashboard/about">
+          <MenuItem>About</MenuItem>
+        </Link>
         <Link href="/dashboard/profile">
           <MenuItem>Profile</MenuItem>
         </Link>
