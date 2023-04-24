@@ -85,40 +85,44 @@ export default function Personal(props: IProps) {
 export const getServerSideProps: GetServerSideProps<IProps> = async (
   context
 ) => {
-  const session = await getSession(context);
+  // const session = await getSession(context);
 
-  console.log("Session: ", session);
+  //console.log("Session: ", session);
 
-  const userId = session?.user._id;
-  const token = session?.user.access_token;
+  // const userId = session?.user._id;
+  // const token = session?.user.access_token;
 
-  const lovedRes = await axios.get<IApiResponse[]>(
-    `${BASE_URL}/users/${userId}/loved`,
-    {
-      headers: { authorization: `Bearer ${token}` },
-    }
-  );
+  // const lovedRes = await axios.get<IApiResponse[]>(
+  //   `${BASE_URL}/users/${userId}/loved`,
+  //   {
+  //     headers: { authorization: `Bearer ${token}` },
+  //   }
+  // );
 
-  const loved = lovedRes.data;
+  // const loved = lovedRes.data;
 
-  const watchedRes = await axios.get<IApiResponse[]>(
-    `${BASE_URL}/users/${userId}/watched`,
-    {
-      headers: { authorization: `Bearer ${token}` },
-    }
-  );
+  // const watchedRes = await axios.get<IApiResponse[]>(
+  //   `${BASE_URL}/users/${userId}/watched`,
+  //   {
+  //     headers: { authorization: `Bearer ${token}` },
+  //   }
+  // );
 
-  const watched = watchedRes.data;
+  // const watched = watchedRes.data;
 
-  const toWatchRes = await axios.get<IApiResponse[]>(
-    `${BASE_URL}/users/${userId}/to-watch`,
-    {
-      headers: { authorization: `Bearer ${token}` },
-    }
-  );
+  // const toWatchRes = await axios.get<IApiResponse[]>(
+  //   `${BASE_URL}/users/${userId}/to-watch`,
+  //   {
+  //     headers: { authorization: `Bearer ${token}` },
+  //   }
+  // );
 
-  const toWatch = toWatchRes.data;
+  // const toWatch = toWatchRes.data;
+  console.log("From server side props");
 
+  const loved: IApiResponse[] = [];
+  const watched: IApiResponse[] = [];
+  const toWatch: IApiResponse[] = [];
   return {
     props: {
       loved,
