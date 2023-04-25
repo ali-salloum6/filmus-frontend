@@ -13,8 +13,16 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
 import Head from "next/head";
+import { useSession } from "next-auth/react";
+import IUpdatedUser from "@/interfaces/UpdatedUser";
+import { BASE_URL } from "@/config/config";
+import axios from "axios";
+import { Session } from "next-auth";
 
 const Profile = () => {
+  const { data: session } = useSession();
+  console.log("Sesssion, ", session);
+
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -55,7 +63,23 @@ const Profile = () => {
     const isEmailValid = validateEmail();
     const isUserNameValid = validateUserName();
     const isPasswordValid = validatePassword();
+
     if (isEmailValid && isUserNameValid && isPasswordValid) {
+      console.log("Token is: ", session?.user.access_token);
+      let sessionUser: ILoginResponse = session?.user as ILoginResponse;
+      let newUser: IUpdatedUser = { ...sessionUser, password };
+
+      const config = {
+        headers: { authorization: `Bearer ${sessionUser.access_token}` },
+      };
+
+      newUser.email = email;
+      newUser.username = userName;
+      const res = await axios.put<ILoginResponse>(
+        `${BASE_URL}/users/${session?.user._id}`,
+        newUser,
+        config
+      );
       window.location.reload();
     }
   };
@@ -102,6 +126,7 @@ const Profile = () => {
                 <FormLabel>Email address</FormLabel>
                 <Input
                   type="email"
+                  placeholder={session?.user.email}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onBlur={validateEmail}
@@ -111,6 +136,7 @@ const Profile = () => {
               <FormControl isInvalid={!!userNameError}>
                 <FormLabel>Username</FormLabel>
                 <Input
+                  placeholder={session?.user.username}
                   type="text"
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}

@@ -8,6 +8,16 @@ const nextConfig = {
       "i2-prod.dailyrecord.co.uk",
     ],
   },
+
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/dashboard/home/1",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;
