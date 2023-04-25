@@ -9,6 +9,7 @@ import { getSession } from "next-auth/react";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { GetServerSideProps } from "next";
 import { Session, getServerSession } from "next-auth";
+import Head from "next/head";
 
 interface IProps {
   loved: IApiResponse[];
@@ -21,8 +22,15 @@ export default function Personal(props: IProps) {
 
   return (
     <>
+      <Head>
+        <title>Your Movies</title>
+        <meta
+          name="description"
+          content="Here the personal movies list can be found, like Watched, To be watched, or favorites."
+        />
+      </Head>
+      <Navbar />
       <VStack w="100%" justify={"left"}>
-        <Navbar />
         <Text
           w={"100%"}
           fontSize="2xl"

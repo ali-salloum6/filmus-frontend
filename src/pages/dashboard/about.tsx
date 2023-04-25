@@ -1,5 +1,6 @@
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
 import { Box, Flex, Image, Text } from "@chakra-ui/react";
+import Head from "next/head";
 import React from "react";
 
 const aboutPage = () => {
@@ -23,6 +24,10 @@ const aboutPage = () => {
 
   return (
     <>
+      <Head>
+        <title>About - Filmus</title>
+        <meta name="description" content="About the team behind Filmus" />
+      </Head>
       <Navbar />
       <Flex direction="column" align="center" justify="center" h="100vh">
         <Box mb={8}>

@@ -4,6 +4,7 @@ import IMovieData from "@/interfaces/ApiSingleResponse";
 import IVideoData from "@/interfaces/ApiVideoResponse";
 import axios from "axios";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 import React from "react";
 
 interface IProps {
@@ -13,7 +14,16 @@ interface IProps {
 }
 const Movie = (props: IProps) => {
   return (
-    <ContentModal data={props.data} id={props.id} video={props.video_key} />
+    <>
+      <Head>
+        <title>{props.data.title}</title>
+        <meta
+          name="description"
+          content={props.data.overview || "movie description"}
+        />
+      </Head>
+      <ContentModal data={props.data} id={props.id} video={props.video_key} />
+    </>
   );
 };
 

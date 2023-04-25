@@ -11,11 +11,16 @@ import { GetStaticProps } from "next/types";
 import axios from "axios";
 import CustomPagination from "@/components/Dashboard/Pagination/Pagination";
 import { useRouter } from "next/router";
+import Head from "next/head";
 
 const Movies = ({ data }: { data: IApiWholeRsponse }) => {
   if (!data) return <p>Loading...</p>;
   return (
     <>
+      <Head>
+        <title>Movies - page {data.page}</title>
+        <meta name="description" content="List of movies" />
+      </Head>
       <Navbar />
       <Text
         w={"100%"}

@@ -17,6 +17,7 @@ import axios from "axios";
 import { IMovieData } from "@/interfaces/ApiResponse";
 import { useRouter } from "next/router";
 import Navbar from "@/components/Dashboard/Navbar/Navbar";
+import Head from "next/head";
 
 interface AddMovieFormData {
   name: string;
@@ -88,6 +89,13 @@ const AddMoviePage = () => {
 
   return (
     <>
+      <Head>
+        <title>Add a movie</title>
+        <meta
+          name="description"
+          content="Add a movie to the database of Filmus"
+        />
+      </Head>
       <Navbar />
       <Box w={400} m={"auto"} mt={8}>
         <form onSubmit={handleSubmit(onSubmit)}>
