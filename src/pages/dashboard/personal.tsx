@@ -18,8 +18,6 @@ interface IProps {
   session: Session | null;
 }
 export default function Personal(props: IProps) {
-  console.log(props);
-
   return (
     <>
       <Head>
@@ -98,8 +96,6 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (
 ) => {
   const session = await getSession(context);
 
-  console.log("Session: ", session);
-
   const userId = session?.user._id;
   const token = session?.user.access_token;
 
@@ -129,11 +125,7 @@ export const getServerSideProps: GetServerSideProps<IProps> = async (
   );
 
   const toWatch = toWatchRes.data;
-  console.log("From server side props");
 
-  //const loved: IApiResponse[] = [];
-  // const watched: IApiResponse[] = [];
-  // const toWatch: IApiResponse[] = [];
   return {
     props: {
       loved,

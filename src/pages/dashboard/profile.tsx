@@ -21,7 +21,6 @@ import { Session } from "next-auth";
 
 const Profile = () => {
   const { data: session } = useSession();
-  console.log("Sesssion, ", session);
 
   const [email, setEmail] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
@@ -65,7 +64,6 @@ const Profile = () => {
     const isPasswordValid = validatePassword();
 
     if (isEmailValid && isUserNameValid && isPasswordValid) {
-      console.log("Token is: ", session?.user.access_token);
       let sessionUser: ILoginResponse = session?.user as ILoginResponse;
       let newUser: IUpdatedUser = { ...sessionUser, password };
 
