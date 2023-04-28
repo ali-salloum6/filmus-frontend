@@ -5,21 +5,21 @@ import React from "react";
 
 const aboutPage = () => {
   const programmers = [
+    // {
+    //   name: "Ali",
+    //   description: "مبمرج",
+    //   image: "/ali.png",
+    // },
     {
-      name: "Ali",
-      description: "مبمرج",
-      image: "/ali.png",
-    },
-    {
-      name: "El3os",
-      description: "أقوي واحد فينا",
+      name: "Asem Abdelhady",
+      description: "Software engineer",
       image: "/el3os.png",
     },
-    {
-      name: "Hadi",
-      description: "زعيم البلوكتشين",
-      image: "/hadi.png",
-    },
+    // {
+    //   name: "Hadi",
+    //   description: "زعيم البلوكتشين",
+    //   image: "/hadi.png",
+    // },
   ];
 
   return (
